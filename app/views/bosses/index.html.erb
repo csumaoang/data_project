@@ -1,12 +1,12 @@
 <div class="mt-8">
   <h1 class="text-2xl font-bold mb-4">Bosses</h1>
 
-  <div class="grid grid-cols-2 gap-4">
+  <div class="grid grid-cols-1 gap-4">
     <% @bosses.each do |boss| %>
       <div class="bg-white rounded shadow p-4">
-        <h2 class="text-xl font-bold"><%= boss['name'] %></h2>
-        <p><strong>Description:</strong> <%= boss['description'] %></p>
-        <p><strong>Appearances:</strong> <%= boss['appearances'] %></p>
+        <h2 class="text-xl font-bold">
+        <%= link_to boss['name'], boss_path(boss['id']) %>
+        </h2>
       </div>
     <% end %>
   </div>

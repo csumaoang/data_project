@@ -1,13 +1,8 @@
 Rails.application.routes.draw do
-  get 'items/index'
-  get 'bosses/index'
-  get 'characters/index'
-  get 'games/index'
-  get 'home/index'
-  root 'home#index'
+  resources :games, only: [:index, :show]
+  resources :characters, only: [:index, :show]
+  resources :bosses, only: [:index, :show]
+  resources :items, only: [:index, :show]
 
-  get '/games', to: 'games#index'
-  get '/characters', to: 'characters#index'
-  get '/bosses', to: 'bosses#index'
-  get '/items', to: 'items#index'
+  root 'home#index'
 end
