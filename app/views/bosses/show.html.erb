@@ -1,8 +1,21 @@
+<!-- app/views/bosses/show.html.erb -->
 <div class="mt-8">
   <h1 class="text-2xl font-bold mb-4"><%= @boss['name'] %></h1>
 
   <div class="bg-white rounded shadow p-4">
     <p><strong>Description:</strong> <%= @boss['description'] %></p>
-    <p><strong>Game:</strong> <%= @boss['game'] %></p>
+    
+    <% if @boss['appearances'].present? %>
+      <% @boss['appearances'].each do |game_url| %>
+        <% game_id = game_url.split('/').last %>
+        <% game_response = ZeldaApiService.new.fetch_game(game_id) %>
+        <% game_name = game_response['data']['name'] if game_response['success'] %>
+        
+        <% if game_name %>
+          <% game_link = game_path(game_id) %>
+          <p><strong>Game:</strong> <%= link_to game_name, game_link %></p>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
 </div>

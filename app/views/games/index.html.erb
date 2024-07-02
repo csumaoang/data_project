@@ -4,9 +4,9 @@
   <div class="grid grid-cols-1 gap-4">
     <% @games.each do |game| %>
       <div class="bg-white rounded shadow p-4">
-      <h2 class="text-xl font-bold">
-      <%= link_to game['name'], game_path(game['id']) %>
-      </h2>
+        <h2 class="text-xl font-bold">
+        <%= link_to game['name'], game_path(game['id']) %>
+        </h2>
       </div>
     <% end %>
   </div>
