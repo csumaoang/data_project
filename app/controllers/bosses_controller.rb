@@ -1,5 +1,6 @@
 class BossesController < ApplicationController
   def index
-    @bosses = ZeldaApiService.new.fetch_bosses
+    response = ZeldaApiService.new.fetch_bosses
+    @bosses = response['data']
   end
 end

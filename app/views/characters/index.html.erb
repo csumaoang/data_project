@@ -1,4 +1,13 @@
-<div>
-  <h1 class="font-bold text-4xl">Characters#index</h1>
-  <p>Find me in app/views/characters/index.html.erb</p>
+<div class="mt-8">
+  <h1 class="text-2xl font-bold mb-4">Characters</h1>
+
+  <div class="grid grid-cols-2 gap-4">
+    <% @characters.each do |character| %>
+      <div class="bg-white rounded shadow p-4">
+        <h2 class="text-xl font-bold"><%= character['name'] %></h2>
+        <p><strong>Description:</strong> <%= character['description'] %></p>
+        <p><strong>Appearances:</strong> <%= character['appearances'] %></p>
+      </div>
+    <% end %>
+  </div>
 </div>

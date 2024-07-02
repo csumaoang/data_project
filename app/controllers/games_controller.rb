@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   def index
-    @games = ZeldaApiService.new.fetch_games
+    response = ZeldaApiService.new.fetch_games
+    @games = response['data']
   end
 end

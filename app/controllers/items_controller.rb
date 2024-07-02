@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   def index
-    @items = ZeldaApiService.new.fetch_items
+    response = ZeldaApiService.new.fetch_items
+    @items = response['data']
   end
 end

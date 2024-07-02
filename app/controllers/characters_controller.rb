@@ -1,5 +1,6 @@
 class CharactersController < ApplicationController
   def index
-    @characters = ZeldaApiService.new.fetch_characters
+    response = ZeldaApiService.new.fetch_characters
+    @characters = response['data']
   end
 end
