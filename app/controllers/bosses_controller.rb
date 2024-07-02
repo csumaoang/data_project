@@ -2,6 +2,8 @@ class BossesController < ApplicationController
   def index
     response = ZeldaApiService.new.fetch_bosses
     @bosses = response['data']
+
+    @bosses = Kaminari.paginate_array(@bosses).page(params[:page]).per(8)
   end
 
   def show

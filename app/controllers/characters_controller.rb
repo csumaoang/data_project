@@ -2,6 +2,8 @@ class CharactersController < ApplicationController
   def index
     response = ZeldaApiService.new.fetch_characters
     @characters = response['data']
+
+    @characters = Kaminari.paginate_array(@characters).page(params[:page]).per(8)
   end
 
   def show

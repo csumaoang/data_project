@@ -63,3 +63,6 @@ end
 gem 'tailwindcss-rails'
 gem 'httparty'
 
+# Adds kaminari for pagination
+gem 'kaminari'
+
