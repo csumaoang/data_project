@@ -41,4 +41,6 @@ class ZeldaApiService
     response = self.class.get("/items/#{id}")
     JSON.parse(response.body)
   end
+
+  
 end

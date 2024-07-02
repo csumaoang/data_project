@@ -18,6 +18,11 @@
           <li><%= link_to 'Bosses', bosses_path, class: 'text-white hover:underline' %></li>
           <li><%= link_to 'Items', items_path, class: 'text-white hover:underline' %></li>
         </ul>
+        <%= form_with url: search_path, method: :get, local: true, class: 'flex space-x-2' do |form| %>
+          <%= form.text_field :query, placeholder: 'Search...', class: 'p-2 rounded' %>
+          <%= form.select :category, options_for_select([['Games', 'games'], ['Characters', 'characters'], ['Bosses', 'bosses'], ['Items', 'items']]), class: 'p-2 rounded' %>
+          <%= form.submit 'Search', class: 'bg-white text-green-500 p-2 rounded' %>
+        <% end %>
       </div>
     </nav>
 

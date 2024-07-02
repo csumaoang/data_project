@@ -1,0 +1,25 @@
+<div class="mt-8">
+  <h1 class="text-2xl font-bold mb-4">Search Results for '<%= @query %>' in <%= @category.capitalize %></h1>
+
+  <% if @results.any? %>
+    <div class="grid grid-cols-1 gap-4">
+      <% @results.each do |result| %>
+        <div class="bg-white rounded shadow p-4">
+          <h2 class="text-xl font-bold">
+            <% if @category == 'games' %>
+              <%= link_to result['name'], game_path(result['id']) %>
+            <% elsif @category == 'characters' %>
+              <%= link_to result['name'], character_path(result['id']) %>
+            <% elsif @category == 'bosses' %>
+              <%= link_to result['name'], boss_path(result['id']) %>
+            <% elsif @category == 'items' %>
+              <%= link_to result['name'], item_path(result['id']) %>
+            <% end %>
+          </h2>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>No results found.</p>
+  <% end %>
+</div>
