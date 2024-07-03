@@ -7,7 +7,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
   </head>
-  <body class="bg-image min-h-screen" >
+  <body class="bg-image min-h-screen">
     <nav class="bg-lime-500 p-6">
       <div class="container mx-auto flex justify-between items-center">
         <%= image_tag("zelda_icon.png", alt: "Icon for Zelda", size: "100", class: "mt-4 rounded-lg shadow-md") %>
@@ -21,8 +21,8 @@
           <li><%= link_to 'About', about_path, class: 'text-white hover:underline' %></li>
         </ul>
         <%= form_with url: search_path, method: :get, local: true, class: 'flex space-x-2' do |form| %>
-          <%= form.text_field :query, placeholder: 'Search...', class: 'p-4 shadow' %>
-          <%= form.select :category, options_for_select([['Games', 'games'], ['Characters', 'characters'], ['Bosses', 'bosses'], ['Items', 'items']]), class: 'p-4 shadow' %>
+          <%= form.text_field :query, value: params[:query], placeholder: 'Search...', class: 'p-4 shadow' %>
+          <%= form.select :category, options_for_select([['Games', 'games'], ['Characters', 'characters'], ['Bosses', 'bosses'], ['Items', 'items']], selected: params[:category]), class: 'p-4 shadow' %>
           <%= form.submit 'Search', class: 'p-4 bg-yellow-500 text-white shadow border' %>
         <% end %>
       </div>
