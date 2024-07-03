@@ -13,7 +13,7 @@
         
         <% if game_name %>
           <% game_link = game_path(game_id) %>
-          <p><strong>Game:</strong> <%= link_to game_name, game_link %></p>
+          <p><%= link_to 'Games: ', games_path, class: 'font-bold hover:underline' %><%= link_to game_name, game_link, class: 'text-blue-500 hover:underline' %></p>
         <% end %>
       <% end %>
     <% end %>
