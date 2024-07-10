@@ -3,7 +3,7 @@ class CharactersController < ApplicationController
     response = ZeldaApiService.new.fetch_characters
     @characters = response['data']
 
-    @characters = Kaminari.paginate_array(@characters).page(params[:page]).per(8)
+    @characters = Kaminari.paginate_array(@characters).page(params[:page]).per(10)
   end
 
   def show

@@ -14,7 +14,7 @@ class ZeldaApiService
     JSON.parse(response.body)
   end
 
-  def fetch_characters(limit: 500, offset: 0)
+  def fetch_characters(limit: 100, offset: 100)
     response = self.class.get("/characters?limit=#{limit}&offset=#{offset}")
     JSON.parse(response.body)
   end
@@ -24,7 +24,7 @@ class ZeldaApiService
     JSON.parse(response.body)
   end
 
-  def fetch_bosses(limit: 500, offset: 0)
+  def fetch_bosses(limit: 100, offset: 100)
     response = self.class.get("/bosses?limit=#{limit}&offset=#{offset}")
     JSON.parse(response.body)
   end
@@ -34,7 +34,7 @@ class ZeldaApiService
     JSON.parse(response.body)
   end
 
-  def fetch_items(limit: 500, offset: 0)
+  def fetch_items(limit: 100, offset: 100)
     response = self.class.get("/items?limit=#{limit}&offset=#{offset}")
     JSON.parse(response.body)
   end

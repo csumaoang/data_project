@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
     response = ZeldaApiService.new.fetch_items
     @items = response['data']
 
-    @items = Kaminari.paginate_array(@items).page(params[:page]).per(8)
+    @items = Kaminari.paginate_array(@items).page(params[:page]).per(10)
   end
 
   def show
