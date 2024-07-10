@@ -1,3 +1,5 @@
+require 'httparty'
+
 class ZeldaApiService
   include HTTParty
   base_uri 'https://zelda.fanapis.com/api'
@@ -12,8 +14,8 @@ class ZeldaApiService
     JSON.parse(response.body)
   end
 
-  def fetch_characters
-    response = self.class.get('/characters')
+  def fetch_characters(limit: 500, offset: 0)
+    response = self.class.get("/characters?limit=#{limit}&offset=#{offset}")
     JSON.parse(response.body)
   end
 
@@ -22,8 +24,8 @@ class ZeldaApiService
     JSON.parse(response.body)
   end
 
-  def fetch_bosses
-    response = self.class.get('/bosses')
+  def fetch_bosses(limit: 500, offset: 0)
+    response = self.class.get("/bosses?limit=#{limit}&offset=#{offset}")
     JSON.parse(response.body)
   end
 
@@ -32,8 +34,8 @@ class ZeldaApiService
     JSON.parse(response.body)
   end
 
-  def fetch_items
-    response = self.class.get('/items')
+  def fetch_items(limit: 500, offset: 0)
+    response = self.class.get("/items?limit=#{limit}&offset=#{offset}")
     JSON.parse(response.body)
   end
 
@@ -41,6 +43,4 @@ class ZeldaApiService
     response = self.class.get("/items/#{id}")
     JSON.parse(response.body)
   end
-
-  
 end
