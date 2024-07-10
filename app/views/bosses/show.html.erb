@@ -5,16 +5,22 @@
     <p><strong>Description:</strong> <%= @boss['description'] %></p>
     
     <% if @boss['appearances'].present? %>
-      <% @boss['appearances'].each do |game_url| %>
-        <% game_id = game_url.split('/').last %>
-        <% game_response = ZeldaApiService.new.fetch_game(game_id) %>
-        <% game_name = game_response['data']['name'] if game_response['success'] %>
-        
-        <% if game_name %>
-          <% game_link = game_path(game_id) %>
-          <p><%= link_to 'Games: ', games_path, class: 'font-bold hover:underline' %><%= link_to game_name, game_link, class: 'text-blue-500 hover:underline' %></p>
+      <p>
+        <%= link_to 'Games: ', games_path, class: 'font-bold hover:underline' %>
+        <% first_game = true %>
+        <% @boss['appearances'].each do |game_url| %>
+          <% game_id = game_url.split('/').last %>
+          <% game_response = ZeldaApiService.new.fetch_game(game_id) %>
+          <% game_name = game_response['data']['name'] if game_response['success'] %>
+          
+          <% if game_name %>
+            <% unless first_game %>, <% end %>
+            <% first_game = false %>
+            <% game_link = game_path(game_id) %>
+            <%= link_to game_name, game_link, class: 'text-blue-500 hover:underline' %>
+          <% end %>
         <% end %>
-      <% end %>
+      </p>
     <% end %>
   </div>
 </div>
