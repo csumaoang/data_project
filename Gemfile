@@ -65,4 +65,3 @@ gem 'httparty'
 
 # Adds kaminari for pagination
 gem 'kaminari'
-
